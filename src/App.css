@@ -1,0 +1,109 @@
+/* General Styling */
+body {
+  font-family: 'Poppins', sans-serif; /* Modern and aesthetic font */
+  background-color: #eaf7fe; /* Light blue background */
+  margin: 0;
+  padding: 0;
+}
+
+/* Centered Container */
+.wedding-container {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  background: #ffffff; /* White card background */
+  border-radius: 15px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Title Styling */
+.wedding-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #004aad; /* Deep blue */
+  margin-bottom: 20px;
+}
+
+/* Countdown Numbers */
+.countdown-number {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #ff7f50; /* Coral color for a vibrant look */
+  margin-bottom: 10px;
+}
+
+/* Countdown Subtext */
+.countdown-text {
+  font-size: 1.2rem;
+  color: #4f4f4f; /* Neutral dark gray for subtext */
+}
+
+/* Wedding Date and Time */
+.wedding-date {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  color: #2b8a3e; /* Green for date */
+}
+
+.wedding-time {
+  font-size: 1rem;
+  color: #1e88e5; /* Blue for time */
+}
+
+/* Loading Spinner */
+.spinner {
+  font-size: 1.5rem;
+  color: #757575; /* Light gray for the loading state */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .wedding-container {
+    margin: 20px;
+    padding: 15px;
+  }
+
+  .wedding-title {
+    font-size: 2rem;
+  }
+
+  .countdown-number {
+    font-size: 2.5rem;
+  }
+
+  .countdown-text {
+    font-size: 1rem;
+  }
+
+  .wedding-date {
+    font-size: 1rem;
+  }
+
+  .wedding-time {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .wedding-container {
+    padding: 10px;
+  }
+
+  .wedding-title {
+    font-size: 1.8rem;
+  }
+
+  .countdown-number {
+    font-size: 2rem;
+  }
+
+  .countdown-text {
+    font-size: 0.9rem;
+  }
+
+  .wedding-date,
+  .wedding-time {
+    font-size: 0.9rem;
+  }
+}
