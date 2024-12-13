@@ -7,7 +7,8 @@ const WeddingCountdown = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get('http://13.60.64.94:8080/countdown')
+    axios.get('http://13.60.64.94:8080/countdown', { withCredentials: true })
+
       .then(response => {
         setCountdown(response.data);
         setLoading(false);
@@ -25,10 +26,10 @@ const WeddingCountdown = () => {
         <div className="spinner">Loading...</div>
       ) : countdown ? (
         <div>
-          <div className="countdown-number">{countdown.daysRemaining}</div>
-          <div className="countdown-text">Days</div>
-          <div className="countdown-number">{countdown.hoursRemaining % 24}</div>
-          <div className="countdown-text">Hours Left</div>
+          {/* <div className="countdown-number">{countdown.daysRemaining}</div>
+          <div className="countdown-text">Days</div> */}
+          <div className="countdown-number">{countdown.formattedCountdown + " " +"Left"}</div>
+          {/* <div className="countdown-text">Hours Left</div> */}
           {/* <p className="wedding-date">Date: {countdown.weddingDate}</p>
           <p className="wedding-time">Time: {countdown.weddingTime}</p> */}
         </div>
