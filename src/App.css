@@ -1,109 +1,344 @@
-/* General Styling */
-body {
-  font-family: 'Poppins', sans-serif; /* Modern and aesthetic font */
-  background-color: #eaf7fe; /* Light blue background */
+/* WeddingCountdown.css */
+/* Base styles and animations */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap');
+
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
-/* Centered Container */
-.wedding-container {
-  max-width: 600px;
-  margin: 50px auto;
+body {
+  font-family: 'Poppins', sans-serif;
+  min-height: 100vh;
+}
+
+/* Container with Islamic-inspired gradient background */
+.countdown-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 20px;
-  background: #ffffff; /* White card background */
-  border-radius: 15px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  text-align: center;
+  background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+  position: relative;
+  overflow: hidden;
 }
 
-/* Title Styling */
+/* Islamic geometric patterns in background */
+.islamic-pattern-top, .islamic-pattern-bottom {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23075e54' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+  opacity: 0.6;
+  z-index: 0;
+}
+
+.islamic-pattern-top {
+  top: -150px;
+  left: -150px;
+  transform: rotate(45deg);
+}
+
+.islamic-pattern-bottom {
+  bottom: -150px;
+  right: -150px;
+  transform: rotate(225deg);
+}
+
+/* Main card */
+.countdown-card {
+  position: relative;
+  width: 100%;
+  max-width: 650px;
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  padding: 40px 30px;
+  z-index: 1;
+  border: 2px solid rgba(7, 94, 84, 0.1);
+}
+
+/* Crescent moon and star decoration */
+.crescent-moon {
+  position: absolute;
+  top: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 50px;
+  background-color: white;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.crescent-moon:before {
+  content: '';
+  position: absolute;
+  width: 38px;
+  height: 38px;
+  background-color: #075e54;
+  border-radius: 50%;
+  right: -5px;
+  top: 6px;
+}
+
+.star {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-right: 5px solid transparent;
+  border-bottom: 12px solid #d4af37;
+  border-left: 5px solid transparent;
+  transform: rotate(35deg);
+  left: 16px;
+  top: 13px;
+}
+
+.star:before {
+  content: '';
+  position: absolute;
+  height: 0;
+  width: 0;
+  top: -7px;
+  left: -3px;
+  border-bottom: 10px solid #d4af37;
+  border-left: 3px solid transparent;
+  border-right: 3px solid transparent;
+  transform: rotate(-35deg);
+}
+
+.star:after {
+  content: '';
+  position: absolute;
+  top: 0px;
+  left: -5px;
+  width: 0px;
+  height: 0px;
+  border-right: 5px solid transparent;
+  border-bottom: 12px solid #d4af37;
+  border-left: 5px solid transparent;
+  transform: rotate(-70deg);
+}
+
+/* Bismillah text */
+.bismillah {
+  font-family: 'Amiri', serif;
+  font-size: 26px;
+  text-align: center;
+  color: #075e54;
+  margin-bottom: 15px;
+  direction: rtl;
+}
+
+/* Wedding title */
 .wedding-title {
-  font-size: 2.5rem;
-  font-weight: bold;
-  color: #004aad; /* Deep blue */
+  font-size: 42px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 15px;
+  color: #075e54;
+}
+
+/* Islamic divider */
+.islamic-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-bottom: 20px;
 }
 
-/* Countdown Numbers */
-.countdown-number {
-  font-size: 3rem;
-  font-weight: bold;
-  color: #ff7f50; /* Coral color for a vibrant look */
-  margin-bottom: 10px;
+.divider-line {
+  height: 1px;
+  width: 120px;
+  background: linear-gradient(to right, transparent, #d4af37, transparent);
 }
 
-/* Countdown Subtext */
-.countdown-text {
-  font-size: 1.2rem;
-  color: #4f4f4f; /* Neutral dark gray for subtext */
+.divider-symbol {
+  font-size: 16px;
+  margin: 0 10px;
+  color: #d4af37;
 }
 
-/* Wedding Date and Time */
+/* Date and time */
 .wedding-date {
-  margin-top: 20px;
-  font-size: 1.2rem;
-  color: #2b8a3e; /* Green for date */
+  text-align: center;
+  margin-bottom: 30px;
+  color: #4b5563;
+}
+
+.wedding-date p {
+  font-size: 24px;
+  font-weight: 300;
 }
 
 .wedding-time {
-  font-size: 1rem;
-  color: #1e88e5; /* Blue for time */
+  font-size: 20px !important;
+  margin-top: 5px;
 }
 
-/* Loading Spinner */
-.spinner {
-  font-size: 1.5rem;
-  color: #757575; /* Light gray for the loading state */
+/* Timer layout */
+.timer-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  margin-bottom: 30px;
 }
 
-/* Responsive Design */
+/* Timer boxes with Islamic color scheme */
+.timer-box {
+  padding: 15px 10px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.timer-value {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.timer-label {
+  font-weight: 500;
+}
+
+/* Color variations for timer boxes - Islamic color scheme */
+.green {
+  background: linear-gradient(to bottom right, #f0f9f6, #e6f5f0);
+  color: #075e54;
+  border: 1px solid rgba(7, 94, 84, 0.1);
+}
+
+.gold {
+  background: linear-gradient(to bottom right, #fbf8f0, #f7f3e6);
+  color: #d4af37;
+  border: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+.emerald {
+  background: linear-gradient(to bottom right, #f0f9f4, #e6f5ec);
+  color: #138676;
+  border: 1px solid rgba(19, 134, 118, 0.1);
+}
+
+.teal {
+  background: linear-gradient(to bottom right, #f0f9f9, #e6f5f5);
+  color: #0d9488;
+  border: 1px solid rgba(13, 148, 136, 0.1);
+}
+
+/* Message and quotes */
+.message-container {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.arabic-quote {
+  font-family: 'Amiri', serif;
+  font-size: 20px;
+  color: #075e54;
+  margin-bottom: 10px;
+  direction: rtl;
+}
+
+.message {
+  font-size: 24px;
+  font-weight: 500;
+  color: #075e54;
+}
+
+/* Islamic arch decoration */
+.islamic-arch {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.arch {
+  width: 100px;
+  height: 50px;
+  border: 2px solid #d4af37;
+  border-top-left-radius: 50px;
+  border-top-right-radius: 50px;
+  border-bottom: 0;
+  position: relative;
+}
+
+.arch:before, .arch:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  width: 10px;
+  height: 10px;
+  background-color: #d4af37;
+  border-radius: 50%;
+}
+
+.arch:before {
+  left: -5px;
+}
+
+.arch:after {
+  right: -5px;
+}
+
+/* Responsive adjustments */
 @media (max-width: 768px) {
-  .wedding-container {
-    margin: 20px;
-    padding: 15px;
+  .bismillah {
+    font-size: 22px;
   }
-
+  
   .wedding-title {
-    font-size: 2rem;
+    font-size: 36px;
   }
-
-  .countdown-number {
-    font-size: 2.5rem;
+  
+  .timer-container {
+    grid-template-columns: repeat(2, 1fr);
   }
-
-  .countdown-text {
-    font-size: 1rem;
+  
+  .timer-value {
+    font-size: 32px;
   }
-
-  .wedding-date {
-    font-size: 1rem;
+  
+  .message {
+    font-size: 20px;
   }
-
-  .wedding-time {
-    font-size: 0.9rem;
+  
+  .arabic-quote {
+    font-size: 18px;
   }
 }
 
 @media (max-width: 480px) {
-  .wedding-container {
-    padding: 10px;
+  .countdown-card {
+    padding: 30px 20px;
   }
-
+  
+  .bismillah {
+    font-size: 18px;
+  }
+  
   .wedding-title {
-    font-size: 1.8rem;
+    font-size: 28px;
   }
-
-  .countdown-number {
-    font-size: 2rem;
+  
+  .wedding-date p {
+    font-size: 18px;
   }
-
-  .countdown-text {
-    font-size: 0.9rem;
+  
+  .timer-value {
+    font-size: 28px;
   }
-
-  .wedding-date,
-  .wedding-time {
-    font-size: 0.9rem;
+  
+  .arabic-quote {
+    font-size: 16px;
   }
 }
